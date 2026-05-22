@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Midlife Crisis | Faith No More Tribute | Detroit</title>
+  <meta name="description" content="Midlife Crisis — Detroit's premier Faith No More tribute band. Available for bookings." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:    #0a0a0a;
+      --deep:     #111111;
+      --surface:  #1a1a1a;
+      --border:   #2a2a2a;
+      --red:      #b8922a;
+      --red-dim:  #7a5e18;
+      --gold:     #b8922a;
+      --white:    #e8e2d9;
+      --muted:    #888880;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-cond:    'Barlow Condensed', sans-serif;
+      --font-body:    'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3rem;
+      height: 64px;
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--red); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-cond);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--black);
+    }
+
+    .hero-bg::after {
+      display: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-cond);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(4.5rem, 14vw, 11rem);
+      line-height: 0.88;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      position: relative;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+
+    .hero-logo {
+      position: relative;
+    }
+
+    .hero-logo svg {
+      width: clamp(180px, 38vw, 320px);
+      height: auto;
+      display: block;
+    }
+
+    /* Fade square edges into page black */
+    .hero-logo::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background:
+        linear-gradient(to right,  #0a0a0a 0%, transparent 22%, transparent 78%, #0a0a0a 100%),
+        linear-gradient(to bottom, #0a0a0a 0%, transparent 22%, transparent 78%, #0a0a0a 100%);
+      pointer-events: none;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-cond);
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1.5rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-subtitle strong {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+
+    .btn {
+      font-family: var(--font-cond);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #cfa030;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      transform: translateY(-1px);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      animation: fadeUp 1s 1s ease both;
+    }
+
+    .scroll-hint span {
+      font-family: var(--font-cond);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ── SECTION BASE ── */
+    section {
+      padding: 6rem 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-label {
+      font-family: var(--font-cond);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--red-dim);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      margin-bottom: 2rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #b8b2a8;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p strong {
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    .about-photo-placeholder {
+      aspect-ratio: 3/4;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,0,26,0.05) 0%, transparent 60%);
+    }
+
+    .placeholder-icon {
+      width: 48px;
+      height: 48px;
+      opacity: 0.2;
+    }
+
+    .placeholder-text {
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.5;
+    }
+
+    /* ── MEDIA ── */
+    #media {
+      background: var(--black);
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .media-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .media-block-label {
+      padding: 1rem 1.25rem;
+      font-family: var(--font-cond);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .media-block-label .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    /* YouTube embed */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe,
+    .video-wrapper .video-placeholder {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-placeholder {
+      background: var(--deep);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .video-placeholder .loading-text {
+      font-family: var(--font-cond);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--border);
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    /* Audio player */
+    .audio-player {
+      padding: 1.5rem;
+    }
+
+    .audio-title {
+      font-family: var(--font-cond);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .audio-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-family: var(--font-cond);
+      letter-spacing: 0.05em;
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .play-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--red);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .play-btn:hover { background: #cfa030; transform: scale(1.05); }
+
+    .play-btn svg { width: 16px; height: 16px; fill: var(--white); }
+
+    .progress-area { flex: 1; }
+
+    .progress-bar-track {
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      cursor: pointer;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--red);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.1s linear;
+      position: relative;
+    }
+
+    .progress-bar-fill::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--white);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .progress-bar-track:hover .progress-bar-fill::after { opacity: 1; }
+
+    .time-display {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-cond);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .audio-note {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-style: italic;
+      font-family: var(--font-cond);
+      letter-spacing: 0.05em;
+    }
+
+    /* Photo grid */
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.5rem;
+      margin-top: 3rem;
+    }
+
+    /* Wide hero shot spans all 3 columns, 16:9 */
+    .photo-cell-hero {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Smaller cells below, 3:2 landscape */
+    .photo-cell {
+      aspect-ratio: 3/2;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-cell img,
+    .photo-cell-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-cell-placeholder {
+      font-family: var(--font-cond);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      opacity: 0.3;
+      text-transform: uppercase;
+    }
+
+    /* ── SHOWS ── */
+    #shows {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shows-list {
+      margin-top: 2.5rem;
+    }
+
+    .show-item {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .show-item:first-child { border-top: 1px solid var(--border); }
+
+    .show-date {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--red);
+      text-align: center;
+    }
+
+    .show-date .month {
+      display: block;
+      font-family: var(--font-cond);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .show-venue {
+      font-family: var(--font-cond);
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .show-location {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      font-family: var(--font-cond);
+      letter-spacing: 0.05em;
+    }
+
+    .show-tba {
+      font-family: var(--font-cond);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem;
+    }
+
+    .no-shows {
+      padding: 3rem 0;
+      font-family: var(--font-cond);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--black);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #b8b2a8;
+      margin-bottom: 2rem;
+    }
+
+    .contact-socials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--muted);
+      font-family: var(--font-cond);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+      padding: 0.75rem 1rem;
+      border: 1px solid transparent;
+    }
+
+    .social-link:hover {
+      color: var(--white);
+      border-color: var(--border);
+    }
+
+    .social-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* Contact form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-family: var(--font-cond);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      padding: 0.75rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    .form-group select {
+      cursor: pointer;
+    }
+
+    .form-group select option {
+      background: var(--surface);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--red);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-status {
+      font-family: var(--font-cond);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      padding: 0.75rem 1rem;
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(184,146,42,0.1);
+      border: 1px solid var(--red-dim);
+      color: var(--white);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--deep);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      color: var(--white);
+    }
+
+    .footer-name span { color: var(--red); }
+
+    .footer-copy {
+      font-family: var(--font-cond);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer-socials a {
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-socials a:hover { color: var(--white); }
+
+    .footer-socials svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      display: block;
+    }
+
+    /* ── DIVIDER ── */
+    .slash-divider {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .slash-divider::before,
+    .slash-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .slash-divider-text {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--border);
+      letter-spacing: 0.2em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(1.1); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .nav-links a { font-size: 0.75rem; }
+
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .photo-cell-hero { aspect-ratio: 3/2; }
+
+      .about-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .about-photo-placeholder { aspect-ratio: 16/9; }
+
+      .media-grid { grid-template-columns: 1fr; }
+
+      .show-item { grid-template-columns: 80px 1fr; }
+      .show-tba { display: none; }
+
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo" aria-label="Midlife Crisis">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 428.21 74.13" style="height:32px;width:auto;display:block;"><defs><style>.hcls-1,.hcls-2{fill:#231f20;}.hcls-2{font-size:48.18px;font-family:LEMONMILK-Medium, LEMON MILK;font-weight:500;letter-spacing:-0.01em;fill:#e8e2d9;}.hcls-3{fill:url(#h-radial-gradient);}.hcls-4{fill:url(#h-radial-gradient-2);}</style><radialGradient id="h-radial-gradient" cx="36.1" cy="36.1" r="25.53" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fac212"/><stop offset="0.52" stop-color="#fcf9d2"/><stop offset="0.98" stop-color="#ba8a2d"/></radialGradient><radialGradient id="h-radial-gradient-2" cx="36.1" cy="36.1" r="36.1" xlink:href="#h-radial-gradient"/></defs><g><g><rect class="hcls-1" x="11.11" y="11.42" width="49.37" height="49.37"/><text class="hcls-2" transform="translate(72.06 60.79)">MIDLIFE CRISIS</text><path class="hcls-3" d="M61.63,61.63H10.57V10.57H61.63ZM13.69,58.52H58.52V13.69H13.69Z"/><path class="hcls-4" d="M36.1,72.21,0,36.1,36.1,0,72.21,36.1ZM4.4,36.1,36.1,67.81,67.81,36.1,36.1,4.4Z"/></g></g></svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#shows">Shows</a></li>
+      <li><a href="#contact">Booking</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-eyebrow">Detroit, MI</div>
+
+    <div class="hero-logo" style="position:relative;animation:fadeUp 0.8s 0.15s ease both;">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 214.36 214.36"><defs><style>.cls-1{fill:#231f20;}.cls-2{fill:url(#radial-gradient);}.cls-3{fill:url(#radial-gradient-2);}.cls-4{font-size:27.99px;fill:#fff;font-family:LEMONMILK-Medium, LEMON MILK;font-weight:500;letter-spacing:-0.01em;}.cls-5{letter-spacing:-0.01em;}</style><radialGradient id="radial-gradient" cx="107.18" cy="107.18" r="70.55" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fac212"/><stop offset="0.52" stop-color="#fcf9d2"/><stop offset="0.98" stop-color="#ba8a2d"/></radialGradient><radialGradient id="radial-gradient-2" cx="107.18" cy="107.18" r="99.77" xlink:href="#radial-gradient"/></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><rect class="cls-1" width="214.36" height="214.36"/><rect class="cls-1" x="36.63" y="36.63" width="141.1" height="141.1"/><path class="cls-2" d="M177.73,177.73H36.63V36.63h141.1Zm-132.5-8.6h123.9V45.23H45.23Z"/><path class="cls-3" d="M107.18,207,7.41,107.18,107.18,7.41,207,107.18ZM19.57,107.18l87.61,87.61,87.61-87.61L107.18,19.57Z"/><text class="cls-4" transform="translate(52.4 107.18)">MIDLIFE<tspan class="cls-5"><tspan x="9.91" y="33.58">CRISIS</tspan></tspan></text></g></g></svg>
+    </div>
+
+    <p class="hero-subtitle">The <strong>Faith No More</strong> Tribute Experience</p>
+
+    <div class="hero-ctas">
+      <a href="#contact" class="btn btn-primary">Book Us</a>
+      <a href="#media" class="btn btn-outline">Watch &amp; Listen</a>
+    </div>
+
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-label">About</div>
+          <h2 class="section-title">The Band</h2>
+          <p>
+            <strong>Midlife Crisis</strong> is Detroit's premier Faith No More tribute — bringing the full force of one of rock's most unpredictable and genre-defying acts back to the stage.
+          </p>
+          <p>
+            From the menacing funk of <em>Epic</em> to the cinematic darkness of <em>Midlife Crisis</em> to the chaos of <em>The Real Thing</em>, we go deep into the catalog — not just the hits.
+          </p>
+          <p>
+            If you've never seen FNM live, or you miss the hell out of them, this is the closest thing.
+          </p>
+          <a href="#contact" class="btn btn-primary" style="margin-top:1rem;">Book a Show</a>
+        </div>
+        <div class="about-photo-placeholder">
+          <!-- PHOTO SLOT: replace this entire div with:
+               <img src="assets/band-photo.jpg" alt="Midlife Crisis band photo" style="width:100%;height:100%;object-fit:cover;" />
+          -->
+          <svg class="placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span class="placeholder-text">Band Photo Coming Soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media">
+    <div class="container">
+      <div class="section-label">Media</div>
+      <h2 class="section-title">Watch &amp; Listen</h2>
+
+      <div class="media-grid">
+
+        <!-- LATEST YOUTUBE VIDEO -->
+        <div class="media-block">
+          <div class="media-block-label"><span class="dot"></span> Latest Video</div>
+          <div class="video-wrapper">
+            <div class="video-placeholder" id="video-placeholder">
+              <div class="spinner"></div>
+              <span class="loading-text">Loading latest video…</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUDIO SAMPLER -->
+        <div class="media-block">
+          <div class="media-block-label"><span class="dot"></span> Audio Sampler</div>
+          <div class="audio-player">
+            <div class="audio-title">Midlife Crisis — Sampler</div>
+            <div class="audio-subtitle">Highlights from the setlist</div>
+
+            <!-- AUDIO SLOT: set src to your actual audio file path, e.g. src="assets/sampler.mp3" -->
+            <audio id="audio-sampler" preload="metadata">
+              <source src="assets/sampler.mp3" type="audio/mpeg" />
+            </audio>
+
+            <div class="player-controls">
+              <button class="play-btn" id="play-btn" onclick="togglePlay()">
+                <svg id="play-icon" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+              </button>
+              <div class="progress-area">
+                <div class="progress-bar-track" id="progress-track" onclick="seekAudio(event)">
+                  <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+                <div class="time-display">
+                  <span id="time-current">0:00</span>
+                  <span id="time-total">0:00</span>
+                </div>
+              </div>
+            </div>
+            <p class="audio-note">A medley of tracks from our live set.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PHOTO GRID -->
+      <div style="margin-top:4rem;">
+        <div class="section-label">Photos</div>
+        <div class="photo-grid">
+
+          <!-- WIDE HERO: full band group shot (16:9). Replace placeholder with:
+               <img src="assets/photo-band-wide.jpg" alt="Midlife Crisis full band" />
+          -->
+          <div class="photo-cell-hero">
+            <span class="photo-cell-placeholder">Full Band — Wide Shot</span>
+          </div>
+
+          <!-- SMALLER CELLS (3:2). Replace each placeholder with:
+               <img src="assets/photo-N.jpg" alt="Midlife Crisis" />
+          -->
+          <div class="photo-cell"><span class="photo-cell-placeholder">Photo</span></div>
+          <div class="photo-cell"><span class="photo-cell-placeholder">Photo</span></div>
+          <div class="photo-cell"><span class="photo-cell-placeholder">Photo</span></div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SHOWS -->
+  <section id="shows">
+    <div class="container">
+      <div class="section-label">Shows</div>
+      <h2 class="section-title">Upcoming Dates</h2>
+      <div class="shows-list" id="shows-list">
+        <!-- Shows added here manually. Example structure (uncomment and fill in):
+        <div class="show-item">
+          <div class="show-date"><span class="month">Jun</span>14</div>
+          <div>
+            <div class="show-venue">The Machine Shop</div>
+            <div class="show-location">Flint, MI</div>
+          </div>
+          <a href="#" class="btn btn-outline">Tickets</a>
+        </div>
+        -->
+        <div class="no-shows">Dates being scheduled — check back soon or <a href="#contact" style="color:var(--red);text-decoration:none;">contact us</a> to book.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Booking &amp; Contact</div>
+      <h2 class="section-title">Get In Touch</h2>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>
+            Interested in booking Midlife Crisis for your venue, event, or festival? Fill out the form and we'll get back to you.
+          </p>
+          <div class="contact-socials">
+            <a href="https://www.youtube.com/channel/UC7w23NxVh0iheGYhDzw6Eog" target="_blank" rel="noopener" class="social-link">
+              <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+              YouTube
+            </a>
+            <a href="https://www.facebook.com/midlife.crisis.detroit" target="_blank" rel="noopener" class="social-link">
+              <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form">
+          <input type="hidden" name="_subject" value="Midlife Crisis Booking Inquiry" />
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" name="name" required placeholder="Name" />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" required placeholder="email@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Inquiry Type</label>
+            <select name="type">
+              <option value="booking">Booking / Show</option>
+              <option value="press">Press / Media</option>
+              <option value="general">General</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" required placeholder="Tell us about your event, venue, date…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+          <div class="form-status" id="form-status">
+            Thanks — we'll be in touch soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-name">Midlife<span>Crisis</span></div>
+        <div class="footer-copy">© 2025 Midlife Crisis · Detroit, MI · Faith No More Tribute</div>
+        <div class="footer-socials">
+          <a href="https://www.youtube.com/channel/UC7w23NxVh0iheGYhDzw6Eog" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/midlife.crisis.detroit" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── CONFIG ──────────────────────────────────────────────
+    const YT_API_KEY    = 'YOUR_API_KEY_HERE';   // ← paste your key
+    const YT_CHANNEL_ID = 'UC7w23NxVh0iheGYhDzw6Eog';
+    // ────────────────────────────────────────────────────────
+
+    // Fetch latest YouTube video
+    async function loadLatestVideo() {
+      try {
+        const url = `https://www.googleapis.com/youtube/v3/search?key=${YT_API_KEY}&channelId=${YT_CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`;
+        const res  = await fetch(url);
+        const data = await res.json();
+        if (data.items && data.items.length > 0) {
+          const videoId = data.items[0].id.videoId;
+          const wrapper = document.getElementById('video-placeholder').parentElement;
+          wrapper.innerHTML = `<iframe
+            src="https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="position:absolute;top:0;left:0;width:100%;height:100%;">
+          </iframe>`;
+        } else {
+          document.getElementById('video-placeholder').innerHTML =
+            '<span class="loading-text" style="color:var(--muted)">No videos found</span>';
+        }
+      } catch(e) {
+        document.getElementById('video-placeholder').innerHTML =
+          '<span class="loading-text" style="color:var(--muted)">Video unavailable</span>';
+      }
+    }
+
+    // Only fetch if API key has been set
+    if (YT_API_KEY !== 'YOUR_API_KEY_HERE') {
+      loadLatestVideo();
+    } else {
+      document.getElementById('video-placeholder').innerHTML =
+        '<span class="loading-text" style="color:var(--muted)">Add your YouTube API key to enable video</span>';
+    }
+
+    // ── AUDIO PLAYER ──────────────────────────────────────────
+    const audio       = document.getElementById('audio-sampler');
+    const playBtn     = document.getElementById('play-btn');
+    const playIcon    = document.getElementById('play-icon');
+    const fill        = document.getElementById('progress-fill');
+    const timeCurrent = document.getElementById('time-current');
+    const timeTotal   = document.getElementById('time-total');
+
+    const pauseIconPath = 'M6 19h4V5H6v14zm8-14v14h4V5h-4z';
+    const playIconPath  = 'M5,3 19,12 5,21';
+
+    function fmt(s) {
+      const m = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return `${m}:${sec.toString().padStart(2,'0')}`;
+    }
+
+    audio.addEventListener('loadedmetadata', () => {
+      timeTotal.textContent = fmt(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (!audio.duration) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      fill.style.width = pct + '%';
+      timeCurrent.textContent = fmt(audio.currentTime);
+    });
+
+    audio.addEventListener('ended', () => {
+      playIcon.setAttribute('d', playIconPath);
+      fill.style.width = '0%';
+      timeCurrent.textContent = '0:00';
+    });
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+        playIcon.setAttribute('d', pauseIconPath);
+      } else {
+        audio.pause();
+        playIcon.setAttribute('d', playIconPath);
+      }
+    }
+
+    function seekAudio(e) {
+      const track = document.getElementById('progress-track');
+      const rect  = track.getBoundingClientRect();
+      const pct   = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = pct * audio.duration;
+    }
+
+    // ── CONTACT FORM ──────────────────────────────────────────
+    const contactForm = document.getElementById('contact-form');
+    const formStatus  = document.getElementById('form-status');
+    const submitBtn   = contactForm.querySelector('button[type="submit"]');
+
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('https://formspree.io/f/mwvzbodz', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(contactForm)
+        });
+
+        if (res.ok) {
+          formStatus.textContent = "Thanks — we'll be in touch soon.";
+          formStatus.classList.add('success');
+          contactForm.reset();
+          setTimeout(() => formStatus.classList.remove('success'), 6000);
+        } else {
+          formStatus.textContent = 'Something went wrong — please email us directly.';
+          formStatus.classList.add('success');
+        }
+      } catch(err) {
+        formStatus.textContent = 'Something went wrong — please email us directly.';
+        formStatus.classList.add('success');
+      }
+
+      submitBtn.textContent = 'Send Message';
+      submitBtn.disabled = false;
+    });
+  </script>
+
+</body>
+</html>
