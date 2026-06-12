@@ -544,7 +544,7 @@
     /* ── PHOTO GRID ── */
     .photo-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       grid-template-rows: auto auto;
       gap: 0.5rem;
       margin-top: 3rem;
@@ -580,6 +580,26 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    /* ── CAROUSEL ── */
+    .carousel-cell {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-cell img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .carousel-cell img.active {
+      opacity: 1;
     }
 
     .photo-cell-placeholder {
@@ -885,7 +905,7 @@
       .nav-links { gap: 1.5rem; }
       .nav-links a { font-size: 0.75rem; }
 
-      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
       .photo-cell-hero { aspect-ratio: 3/2; }
 
       .about-grid,
@@ -897,8 +917,6 @@
 
       .show-item { grid-template-columns: 80px 1fr; }
       .show-tba { display: none; }
-
-      .photo-grid { grid-template-columns: repeat(2, 1fr); }
 
       .footer-inner { flex-direction: column; text-align: center; }
     }
@@ -1033,19 +1051,16 @@
         <div class="section-label">Photos</div>
         <div class="photo-grid">
 
-          <!-- WIDE HERO: full band group shot (16:9). Replace placeholder with:
-               <img src="assets/photo-band-wide.jpg" alt="Midlife Crisis full band" />
-          -->
+          <!-- WIDE HERO: full band group shot (16:9) -->
           <div class="photo-cell-hero">
-            <span class="photo-cell-placeholder">Full Band — Wide Shot</span>
+            <img src="assets/photo-band-wide.jpg" alt="Midlife Crisis full band" />
           </div>
 
-          <!-- SMALLER CELLS (3:2). Replace each placeholder with:
-               <img src="assets/photo-N.jpg" alt="Midlife Crisis" />
-          -->
-          <div class="photo-cell"><span class="photo-cell-placeholder">Photo</span></div>
-          <div class="photo-cell"><span class="photo-cell-placeholder">Photo</span></div>
-          <div class="photo-cell"><span class="photo-cell-placeholder">Photo</span></div>
+          <!-- ROTATING PANELS -->
+          <div class="photo-cell carousel-cell" data-panel="0"></div>
+          <div class="photo-cell carousel-cell" data-panel="1"></div>
+          <div class="photo-cell carousel-cell" data-panel="2"></div>
+          <div class="photo-cell carousel-cell" data-panel="3"></div>
 
         </div>
       </div>
@@ -1086,7 +1101,7 @@
             Interested in booking Midlife Crisis for your venue, event, or festival? Fill out the form and we'll get back to you.
           </p>
           <div class="contact-socials">
-            <a href="https://www.youtube.com/channel/UCZXEmxOv5MlNbmC8IVrFQlQ" target="_blank" rel="noopener" class="social-link">
+            <a href="https://www.youtube.com/channel/UC7w23NxVh0iheGYhDzw6Eog" target="_blank" rel="noopener" class="social-link">
               <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
               YouTube
             </a>
@@ -1135,7 +1150,7 @@
         <div class="footer-name">Midlife<span>Crisis</span></div>
         <div class="footer-copy">© 2025 Midlife Crisis · Detroit, MI · Faith No More Tribute</div>
         <div class="footer-socials">
-          <a href="https://www.youtube.com/channel/UCZXEmxOv5MlNbmC8IVrFQlQ" target="_blank" rel="noopener" aria-label="YouTube">
+          <a href="https://www.youtube.com/channel/UC7w23NxVh0iheGYhDzw6Eog" target="_blank" rel="noopener" aria-label="YouTube">
             <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
           </a>
           <a href="https://www.facebook.com/midlife.crisis.detroit" target="_blank" rel="noopener" aria-label="Facebook">
@@ -1148,8 +1163,8 @@
 
   <script>
     // ── CONFIG ──────────────────────────────────────────────
-    const YT_API_KEY    = 'AIzaSyBIsEL_oIfNIrMbavKmopqIyXsd2-G_M_w';   // ← paste your key
-    const YT_CHANNEL_ID = 'UCZXEmxOv5MlNbmC8IVrFQlQ';
+    const YT_API_KEY    = 'YOUR_API_KEY_HERE';   // ← paste your key
+    const YT_CHANNEL_ID = 'UC7w23NxVh0iheGYhDzw6Eog';
     // ────────────────────────────────────────────────────────
 
     // Fetch latest YouTube video
@@ -1271,7 +1286,52 @@
       submitBtn.textContent = 'Send Message';
       submitBtn.disabled = false;
     });
-  </script>
+    // ── PHOTO CAROUSEL ───────────────────────────────────────
+    const carouselPhotos = [
+      'assets/photo-1.jpg',
+      'assets/photo-2.jpg',
+      'assets/photo-3.jpg',
+      'assets/photo-4.jpg',
+      'assets/photo-5.jpg',
+      'assets/photo-6.jpg',
+    ];
+
+    // Which photos each panel cycles through
+    const panelSets = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [0, 2, 4],
+      [1, 3, 5],
+    ];
+
+    const panels = document.querySelectorAll('.carousel-cell');
+
+    panels.forEach((panel, panelIndex) => {
+      const set = panelSets[panelIndex];
+
+      // Pre-load images into the cell
+      set.forEach((photoIndex, i) => {
+        const img = document.createElement('img');
+        img.src = carouselPhotos[photoIndex];
+        img.alt = 'Midlife Crisis';
+        if (i === 0) img.classList.add('active');
+        panel.appendChild(img);
+      });
+
+      let current = 0;
+      const imgs = panel.querySelectorAll('img');
+
+      // Stagger start time per panel so they don't all flip together
+      setTimeout(() => {
+        setInterval(() => {
+          imgs[current].classList.remove('active');
+          current = (current + 1) % imgs.length;
+          imgs[current].classList.add('active');
+        }, 4000);
+      }, panelIndex * 1000);
+    });
+
+  
 
 </body>
 </html>
