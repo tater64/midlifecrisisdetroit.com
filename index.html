@@ -668,6 +668,24 @@
       letter-spacing: 0.05em;
     }
 
+    .show-time {
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-top: 0.2rem;
+      font-family: var(--font-cond);
+      letter-spacing: 0.05em;
+    }
+
+    .show-free {
+      font-family: var(--font-cond);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: right;
+      max-width: 120px;
+    }
+
     .show-tba {
       font-family: var(--font-cond);
       font-size: 0.72rem;
@@ -1074,17 +1092,7 @@
       <div class="section-label">Shows</div>
       <h2 class="section-title">Upcoming Dates</h2>
       <div class="shows-list" id="shows-list">
-        <!-- Shows added here manually. Example structure (uncomment and fill in):
-        <div class="show-item">
-          <div class="show-date"><span class="month">Jun</span>14</div>
-          <div>
-            <div class="show-venue">The Machine Shop</div>
-            <div class="show-location">Flint, MI</div>
-          </div>
-          <a href="#" class="btn btn-outline">Tickets</a>
-        </div>
-        -->
-        <div class="no-shows">Dates being scheduled — check back soon or <a href="#contact" style="color:var(--red);text-decoration:none;">contact us</a> to book.</div>
+        <div class="no-shows" id="shows-loading">Loading shows…</div>
       </div>
     </div>
   </section>
@@ -1330,6 +1338,93 @@
         }, 4000);
       }, panelIndex * 1000);
     });
+
+    // ── SHOWS (Google Sheets CSV) ───────────────────────────────
+    const SHOWS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS5D-5ZrRnW-BP1H935b0j2Gz77R3-ZwmwvWMAYpsRfv4wZmdt7y4Qp9qNlVXrO_oK1xG3mijnSJvsT/pub?output=csv';
+
+    const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+      return lines.slice(1).map(line => {
+        // simple CSV split (handles quoted commas)
+        const cells = line.match(/(".*?"|[^,]+)(?=,|$)/g) || [];
+        const row = {};
+        headers.forEach((h, i) => {
+          row[h] = (cells[i] || '').trim().replace(/^"|"$/g, '');
+        });
+        return row;
+      });
+    }
+
+    function formatDateParts(dateStr) {
+      // Expecting M/D/YYYY
+      const [m, d, y] = dateStr.split('/').map(s => parseInt(s, 10));
+      if (!m || !d) return { month: '', day: '' };
+      return { month: MONTHS[m - 1] || '', day: d };
+    }
+
+    function ticketsMarkup(ticketsRaw) {
+      const val = (ticketsRaw || '').trim();
+      const lower = val.toLowerCase();
+
+      if (!val || lower === 'n/a' || lower === 'free') {
+        return `<span class="show-free">Free</span>`;
+      }
+      if (lower === 'door' || lower === 'pay at the door') {
+        return `<span class="show-free">Pay at Door</span>`;
+      }
+      // Dollar amount, e.g. "$10", "10", "$10.00"
+      const dollarMatch = val.match(/^\$?\s?(\d+(\.\d{1,2})?)$/);
+      if (dollarMatch) {
+        const amount = dollarMatch[1].endsWith('.00') ? dollarMatch[1].slice(0, -3) : dollarMatch[1];
+        return `<span class="show-free">$${amount} Cover at Door</span>`;
+      }
+      // Otherwise treat as a URL
+      return `<a href="${val}" target="_blank" rel="noopener" class="btn btn-outline">Tickets</a>`;
+    }
+
+    async function loadShows() {
+      const list = document.getElementById('shows-list');
+      try {
+        const res = await fetch(SHOWS_CSV_URL, { cache: 'no-store' });
+        const text = await res.text();
+        const rows = parseCSV(text).filter(r => r.Date && r.Venue);
+
+        // Sort by date ascending
+        rows.sort((a, b) => new Date(a.Date) - new Date(b.Date));
+
+        // Filter out past shows
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        const upcoming = rows.filter(r => new Date(r.Date) >= today);
+
+        if (upcoming.length === 0) {
+          list.innerHTML = '<div class="no-shows">Dates being scheduled — check back soon or <a href="#contact" style="color:var(--gold);text-decoration:none;">contact us</a> to book.</div>';
+          return;
+        }
+
+        list.innerHTML = upcoming.map(row => {
+          const { month, day } = formatDateParts(row.Date);
+          const time = row.Time ? `<div class="show-time">${row.Time}</div>` : '';
+          return `
+            <div class="show-item">
+              <div class="show-date"><span class="month">${month}</span>${day}</div>
+              <div>
+                <div class="show-venue">${row.Venue}</div>
+                <div class="show-location">${row.Location || ''}</div>
+                ${time}
+              </div>
+              ${ticketsMarkup(row.Tickets)}
+            </div>`;
+        }).join('');
+      } catch (e) {
+        list.innerHTML = '<div class="no-shows">Unable to load shows right now — check back soon.</div>';
+      }
+    }
+
+    loadShows();
 
   </script>
 
