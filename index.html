@@ -1346,13 +1346,32 @@
 
     function parseCSV(text) {
       const lines = text.trim().split('\n');
-      const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+
+      function splitCSVLine(line) {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          const char = line[i];
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            result.push(current.trim());
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        result.push(current.trim());
+        return result;
+      }
+
+      const headers = splitCSVLine(lines[0]);
       return lines.slice(1).map(line => {
-        // simple CSV split (handles quoted commas)
-        const cells = line.match(/(".*?"|[^,]+)(?=,|$)/g) || [];
+        const cells = splitCSVLine(line);
         const row = {};
         headers.forEach((h, i) => {
-          row[h] = (cells[i] || '').trim().replace(/^"|"$/g, '');
+          row[h] = (cells[i] || '').trim();
         });
         return row;
       });
